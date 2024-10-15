@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="PlaceApplicationType" ApplicationTypeVersion="1.0.8" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+  <Parameters>
+    <Parameter Name="Frontend_ASPNETCORE_ENVIRONMENT" DefaultValue="" />
+    <Parameter Name="EndpointUrl" DefaultValue="" />
+  </Parameters>
+  <!-- Import the ServiceManifest from the ServicePackage. The ServiceManifestName and ServiceManifestVersion 
+       should match the Name and Version attributes of the ServiceManifest element defined in the 
+       ServiceManifest.xml file. -->
+  <ServiceManifestImport>
+    <ServiceManifestRef ServiceManifestName="PythonBotPkg" ServiceManifestVersion="1.0.1" />
+    <ConfigOverrides />
+    <EnvironmentOverrides CodePackageRef="code">
+      <EnvironmentVariable Name="EndpointUrl" Value="[EndpointUrl]" />
+    </EnvironmentOverrides>
+    <Policies>
+      <RunAsPolicy CodePackageRef="Code" UserRef="SetupAdminUser" EntryPointType="Setup" />
+      <RunAsPolicy CodePackageRef="Code" UserRef="SetupAdminUser" />
+    </Policies>
+  </ServiceManifestImport>
+  <ServiceManifestImport>
+    <ServiceManifestRef ServiceManifestName="FrontendPkg" ServiceManifestVersion="1.0.7" />
+    <ConfigOverrides />
+    <EnvironmentOverrides CodePackageRef="code">
+      <EnvironmentVariable Name="ASPNETCORE_ENVIRONMENT" Value="[Frontend_ASPNETCORE_ENVIRONMENT]" />
+    </EnvironmentOverrides>
+  </ServiceManifestImport>
+  <ServiceManifestImport>
+    <ServiceManifestRef ServiceManifestName="GridPkg" ServiceManifestVersion="1.0.0" />
+    <ConfigOverrides />
+  </ServiceManifestImport>
+  <ServiceManifestImport>
+    <ServiceManifestRef ServiceManifestName="UserPkg" ServiceManifestVersion="1.0.2" />
+    <ConfigOverrides />
+  </ServiceManifestImport>
+  <Principals>
+    <Users>
+      <User Name="SetupAdminUser">
+        <MemberOf>
+          <SystemGroup Name="Administrators" />
+        </MemberOf>
+      </User>
+    </Users>
+  </Principals>
+</ApplicationManifest>

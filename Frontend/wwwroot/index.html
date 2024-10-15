@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>r/Place Clone</title>
+    <link rel="stylesheet" href="/css/styles.css"> <!-- Link to the CSS file -->
+</head>
+<body>
+    <div id="canvas-container">
+        <canvas id="pixelCanvas"></canvas>
+
+        <!-- Login/Logout Controls -->
+        <div class="controls" id="auth-controls">
+            <button id="login-btn">Login</button>
+            <span id="display-username" style="display: none;"></span>
+            <button id="logout-btn" style="display: none;">Logout</button>
+            <p id="timer" style="display: none;">Next Pixel: 00:00</p>
+        </div>
+
+        <!-- Color Selector -->
+        <div class="controls" id="color-controls">
+            <input type="color" id="color-picker">
+        </div>
+
+        <!-- Cooldown Notification -->
+        <div id="cooldown-notification" style="position: absolute; top: 20px; left: 50%; transform: translateX(-50%); background-color: rgba(255, 0, 0, 0.8); color: white; padding: 10px; border-radius: 5px; display: none;">
+            You need to wait for the cooldown to finish!
+        </div>
+
+        <!-- Login Failed Notification -->
+        <div id="login-failed" style="position: absolute; top: 20px; left: 50%; transform: translateX(-50%); background-color: rgba(255, 0, 0, 0.8); color: white; padding: 10px; border-radius: 5px; display: none;">
+            Login failed. Please try again.
+        </div>
+
+        <!-- Please login Notification -->
+        <div id="please-login" style="position: absolute; top: 20px; left: 50%; transform: translateX(-50%); background-color: rgba(255, 0, 0, 0.8); color: white; padding: 10px; border-radius: 5px; display: none;">
+            Please login to place pixels!
+        </div>
+
+        <!-- Session Expired Notification -->
+        <div id="session-expired" style="position: absolute; top: 20px; left: 50%; transform: translateX(-50%); background-color: rgba(255, 0, 0, 0.8); color: white; padding: 10px; border-radius: 5px; display: none;">
+            Your session has expired. Please login again.
+        </div>
+
+        <!-- Login Form (initially hidden) -->
+        <div id="login-form-container" class="login-form">
+            <div class="login-header">
+                <span id="close-login-form" class="close-btn">&times;</span>
+            </div>
+            <div class="login-body">
+                <input type="text" id="username" placeholder="Username" maxlength="20" />
+                <input type="password" id="password" placeholder="Password" />
+                <button id="login-submit">Login</button>
+                <button id="open-create-user-form">Create User</button>
+            </div>
+        </div>
+        <!-- Create User Form (initially hidden) -->
+        <div id="create-user-form-container" class="login-form" style="display: none;">
+            <div class="login-header">
+                <span id="close-create-user-form" class="close-btn">&times;</span>
+            </div>
+            <div class="login-body">
+                <input type="text" id="first-name" placeholder="First Name" maxlength="20" />
+                <input type="text" id="last-name" placeholder="Last Name" maxlength="20" />
+                <input type="text" id="new-username" placeholder="Username" maxlength="20" />
+                <input type="password" id="new-password" placeholder="Password" />
+                <input type="password" id="confirm-password" placeholder="Confirm Password" />
+                <button id="create-user-submit">Create User</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load user.js first so its functions are available for main.js -->
+    <script src="/js/user.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+</html>

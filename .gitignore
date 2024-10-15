@@ -1,0 +1,43 @@
+# Ignore Visual Studio temporary files, build results, and
+# node_modules.
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Mm][Dd]64/
+*.user
+*.rsuser
+*.suo
+*.sln.docstates
+[Bb]in/
+[Oo]bj/
+.vscode/
+.idea/
+
+# Ignore Service Fabric related deployment files
+*.sfproj.FileListAbsolute.txt
+*.sfproj.FileList.txt
+artifacts/
+
+# Ignore common service logs and diagnostic outputs
+*.log
+*.dmp
+
+# Ignore NuGet packages
+*.nupkg
+*.snupkg
+project.lock.json
+project.fragment.lock.json
+.nuget/
+packages/
+NpmPackages/
+node_modules/
+
+# Ignore build results
+msbuild.log
+msbuild*.log
+msbuild.log.0*
+msbuild.log-*
+
+# Ignore the .vs folder for Visual Studio users
+.vs/
