@@ -200,6 +200,9 @@ loginBtn.addEventListener('click', () => {
 // Close the login form when the "X" button is clicked
 closeLoginFormBtn.addEventListener('click', () => {
     loginFormContainer.style.display = 'none';  // Hide login form
+    // Clear username and password fields after successful login
+    document.getElementById('username').value = '';
+    document.getElementById('password').value = '';
 });
 
 async function logIn(username, token) {
@@ -247,8 +250,8 @@ loginSubmitBtn.addEventListener('click', async () => {
     if (token) {
         await logIn(username, token);
         // Clear username and password fields after successful login
-        username.value = '';
-        password.value = '';
+        document.getElementById('username').value = '';
+        document.getElementById('password').value = '';
     }
 });
 
@@ -299,10 +302,17 @@ const closeCreateUserFormBtn = document.getElementById('close-create-user-form')
 openCreateUserBtn.addEventListener('click', () => {
     loginFormContainer.style.display = 'none';
     createUserFormContainer.style.display = 'block';
+    document.getElementById('username').value = '';
+    document.getElementById('password').value = '';
 });
 
 closeCreateUserFormBtn.addEventListener('click', () => {
     createUserFormContainer.style.display = 'none';
+    document.getElementById('first-name').value = '';
+    document.getElementById('last-name').value = '';
+    document.getElementById('new-username').value = '';
+    document.getElementById('new-password').value = '';
+    document.getElementById('confirm-password').value = '';
 });
 
 const createUserSubmitBtn = document.getElementById('create-user-submit');
@@ -331,11 +341,11 @@ createUserSubmitBtn.addEventListener('click', async () => {
 
         createUserFormContainer.style.display = 'none';
         // clear the fields after successful user creation
-        firstName.value = '';
-        lastName.value = '';
-        newUsername.value = '';
-        newPassword.value = '';
-        confirmPassword.value = '';
+        document.getElementById('first-name').value = '';
+        document.getElementById('last-name').value = '';
+        document.getElementById('new-username').value = '';
+        document.getElementById('new-password').value = '';
+        document.getElementById('confirm-password').value = '';
     }
 });
 
