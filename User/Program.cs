@@ -4,6 +4,7 @@ using System.Fabric;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.ServiceFabric.Actors.Runtime;
+using StatelessContainer;
 
 namespace User
 {
@@ -14,6 +15,7 @@ namespace User
         /// </summary>
         private static void Main()
         {
+            SFBinaryLoader.Initialize();
             try
             {
                 // This line registers an Actor Service to host your actor class with the Service Fabric runtime.

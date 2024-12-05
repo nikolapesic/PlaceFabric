@@ -17,9 +17,9 @@
   </ServiceTypes>
   <CodePackage Name="Code" Version="1.0.0">
     <EntryPoint>
-      <ExeHost>
-        <Program>User.exe</Program>
-      </ExeHost>
+      <ContainerHost>
+        <ImageName>usercontainer:latest</ImageName>
+      </ContainerHost>
     </EntryPoint>
   </CodePackage>
   <ConfigPackage Name="Config" Version="1.0.0" />
@@ -29,5 +29,4 @@
       <Endpoint Name="UserActorServiceReplicatorEndpoint" />
     </Endpoints>
   </Resources>
-  <!-- The content will be generated during build -->
 </ServiceManifest>

@@ -24,14 +24,31 @@
     <EnvironmentOverrides CodePackageRef="code">
       <EnvironmentVariable Name="ASPNETCORE_ENVIRONMENT" Value="[Frontend_ASPNETCORE_ENVIRONMENT]" />
     </EnvironmentOverrides>
+    <Policies>
+      <ContainerHostPolicies CodePackageRef="Code" Isolation="hyperv">
+        <PortBinding ContainerPort="8124" EndpointRef="ServiceEndpoint" />
+      </ContainerHostPolicies>
+    </Policies>
   </ServiceManifestImport>
   <ServiceManifestImport>
     <ServiceManifestRef ServiceManifestName="GridPkg" ServiceManifestVersion="1.0.0" />
     <ConfigOverrides />
+    <Policies>
+      <ContainerHostPolicies CodePackageRef="Code" Isolation="hyperv">
+        <PortBinding ContainerPort="0" EndpointRef="GridServiceEndpoint" />
+        <PortBinding ContainerPort="0" EndpointRef="ReplicatorEndpoint" />
+      </ContainerHostPolicies>
+    </Policies>
   </ServiceManifestImport>
   <ServiceManifestImport>
     <ServiceManifestRef ServiceManifestName="UserPkg" ServiceManifestVersion="1.0.0" />
     <ConfigOverrides />
+    <Policies>
+      <ContainerHostPolicies CodePackageRef="Code" Isolation="hyperv">
+        <PortBinding ContainerPort="0" EndpointRef="UserActorServiceEndpointV2_1" />
+        <PortBinding ContainerPort="0" EndpointRef="UserActorServiceReplicatorEndpoint" />
+      </ContainerHostPolicies>
+    </Policies>
   </ServiceManifestImport>
   <Principals>
     <Users>

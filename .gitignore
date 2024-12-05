@@ -41,3 +41,6 @@ msbuild.log-*
 
 # Ignore the .vs folder for Visual Studio users
 .vs/
+
+publish/
+Dockerfile

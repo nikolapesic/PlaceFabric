@@ -1,4 +1,5 @@
 using Microsoft.ServiceFabric.Services.Runtime;
+using StatelessContainer;
 using System;
 using System.Diagnostics;
 using System.Threading;
@@ -13,6 +14,7 @@ namespace Frontend
         /// </summary>
         private static void Main()
         {
+            SFBinaryLoader.Initialize();
             try
             {
                 // The ServiceManifest.XML file defines one or more service type names.

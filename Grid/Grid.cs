@@ -2,6 +2,7 @@ using System.Fabric;
 using Microsoft.ServiceFabric.Data.Collections;
 using Microsoft.ServiceFabric.Services.Communication.Runtime;
 using Microsoft.ServiceFabric.Services.Remoting;
+using Microsoft.ServiceFabric.Services.Remoting.FabricTransport.Runtime;
 using Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Runtime;
 using Microsoft.ServiceFabric.Services.Runtime;
 using static Grid.IGridService;
@@ -44,7 +45,14 @@ namespace Grid
             return new[]
             {
                 new ServiceReplicaListener(context =>
-                    new FabricTransportServiceRemotingListener(context, this))
+                {
+                    var settings = new FabricTransportRemotingListenerSettings
+                    {
+                        EndpointResourceName = "GridServiceEndpoint" // Specify the endpoint from ServiceManifest.xml
+                    };
+                    return new FabricTransportServiceRemotingListener(context, this, settings);
+                },
+                "GridServiceEndpoint") // Name it the same as in ServiceManifest.xml, but it would be correct without this parameter too
             };
         }
 
